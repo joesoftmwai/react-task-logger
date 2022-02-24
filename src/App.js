@@ -1,5 +1,6 @@
 import Header from './components/header/Header';
 import './App.css';
+import Tasks from './components/tasks/Tasks';
 
 function App() {
 
@@ -8,8 +9,8 @@ function App() {
   return (
     <div className="container">
       <Header title={'mwai'} />
-      <h1>You will never walk alone</h1>
-      <h2>{name}</h2>
+      
+      <Tasks />
     </div>
   );
 }
