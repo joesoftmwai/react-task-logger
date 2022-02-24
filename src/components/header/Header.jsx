@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({title}) => {
   return (
     <header>
+        <i>{title}</i>
         <h1>Task Logger</h1>
     </header>
   )
