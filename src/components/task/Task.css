@@ -3,6 +3,8 @@
     margin: 5px;
     padding: 10px 20px;
     cursor: pointer;
+    margin-bottom: 0.85rem;
+    border-radius: 7px;
   }
   
   .task.reminder {

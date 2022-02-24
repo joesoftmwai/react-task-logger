@@ -2,6 +2,7 @@ import Header from './components/header/Header';
 import './App.css';
 import Tasks from './components/tasks/Tasks';
 import { useState } from 'react';
+import { FaCannabis } from 'react-icons/fa'
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
             id: 2,
             text: 'Arsenal vs wolves matdh day',
             date: 'Feb 24th @ 10:45pm',
-            reminder: true
+            reminder: false
         },
         {
             id: 3,
@@ -35,11 +36,25 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id))
   } 
 
+  const toggleReminder = (id) => {
+    console.log('reminder', id);
+    setTasks(tasks.map((task) =>
+     task.id === id ? { ...task, reminder: !task.reminder} : task ))
+  }
+
   return (
     <div className="container">
       <Header title={'mwai'} />
       
-      <Tasks tasks={tasks} deleteTask={deleteTask} />
+      { tasks.length ?  
+
+        <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder} /> :
+
+        <div style={{color: 'red', textAlign:'center'}} >
+          <i> <FaCannabis/> No tasks found</i>
+        </div>
+
+      }
     </div>
   );
 }

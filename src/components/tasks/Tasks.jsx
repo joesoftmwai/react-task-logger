@@ -3,7 +3,7 @@
 import Task from "../task/Task"
 
 
-const Tasks = ({tasks, deleteTask}) => {
+const Tasks = ({tasks, deleteTask, toggleReminder}) => {
 
     // const [tasks, setTasks] = useState(
     //     [
@@ -33,7 +33,7 @@ const Tasks = ({tasks, deleteTask}) => {
         {
          tasks.map(task => (
             // <h5 key={task.id}> {task.text} </h5> 
-            <Task key={task.id} task={task} deleteTask={deleteTask} />
+            <Task key={task.id} task={task} deleteTask={deleteTask} toggleReminder={toggleReminder} />
             )) 
         }
     </div>
