@@ -1,11 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './Header.css';
+import Button from '../button/Button';
+
+
 const Header = ({title}) => {
+    const addTask = () => {
+        console.log('elmas');
+    }
   return (
-    <header>
-        <i>{title}</i>
+    <header className='header'>
         <h1>Task Logger</h1>
+        <Button color='green' text='Add' onClick={addTask} />
     </header>
   )
 }
