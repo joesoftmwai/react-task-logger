@@ -5,14 +5,17 @@ import './Header.css';
 import Button from '../button/Button';
 
 
-const Header = ({title}) => {
-    const addTask = () => {
-        console.log('elmas');
-    }
+const Header = ({title, onAdd, showAdd}) => {
+    // const addTask = () => {
+    //     console.log('elmas');
+    //     onAdd
+    // }
   return (
     <header className='header'>
         <h1>Task Logger</h1>
-        <Button color='green' text='Add' onClick={addTask} />
+        <Button color={ showAdd ? 'red' : 'green'} 
+            text={ showAdd ? 'Close' : 'Add'} 
+            onClick={onAdd} />
     </header>
   )
 }

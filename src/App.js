@@ -32,6 +32,8 @@ function App() {
     ]
   );
 
+  const [showAddTask, setAddTask] = useState(false);
+
   const deleteTask = (id) => {
     console.log('del', id);
     setTasks(tasks.filter(task => task.id !== id))
@@ -45,12 +47,16 @@ function App() {
 
   const addTask = (task) => {
     console.log('task', task);
+    const id = Math.floor(Math.random() *1000) + 1;
+    setTasks([ ...tasks, {id, ...task}])
    
   }
 
   return (
     <div className="container">
-      <Header title={'mwai'} />
+      <Header title={'mwai'} onAdd={() => setAddTask(!showAddTask)} showAdd={showAddTask} />
+
+      { showAddTask && <AddTask  addTask = {addTask} />}
       
       { tasks.length ?  
 
@@ -61,8 +67,6 @@ function App() {
         </div>
 
       }
-
-      <AddTask  addTask = {addTask} />
 
     </div>
   );

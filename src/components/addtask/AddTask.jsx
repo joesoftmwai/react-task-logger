@@ -8,7 +8,7 @@ const AddTask = ({  addTask }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         if(text && day) {
-            addTask({text, day, reminder});
+            addTask({text, date: day, reminder});
         }
       
         clearForm();
