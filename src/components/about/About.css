@@ -1,0 +1,12 @@
+.container {
+    text-align: center;
+}
+
+.my-2 {
+    padding: 1rem 0;
+}
+
+.by-1 {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}

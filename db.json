@@ -11,6 +11,18 @@
       "text": "New gig from kelvin",
       "date": "Feb 26th @ 10:30pm",
       "reminder": true
+    },
+    {
+      "text": "Fix CMA LMS bugs",
+      "date": "Fri Feb 25th, 2021",
+      "reminder": true,
+      "id": 4
+    },
+    {
+      "text": "Eboard finalization",
+      "date": "Fri Feb 25th, 2021",
+      "reminder": true,
+      "id": 5
     }
   ],
   "posts": [

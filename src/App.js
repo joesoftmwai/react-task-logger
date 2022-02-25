@@ -4,6 +4,9 @@ import Tasks from './components/tasks/Tasks';
 import { useEffect, useState } from 'react';
 import { FaCannabis } from 'react-icons/fa'
 import AddTask from './components/addtask/AddTask';
+import Footer from './components/footer/Footer';
+import About from './components/about/About';
+
 
 function App() {
 
@@ -46,10 +49,11 @@ function App() {
     return data;
   }
 
+  
+
   const deleteTask = async (id) => {
     await fetch(`http://localhost:5000/tasks/${id}`,{ 
-      method: 'DELETE',
-
+      method: 'DELETE'
     })
     console.log('del', id);
     setTasks(tasks.filter(task => task.id !== id  ))
@@ -61,30 +65,52 @@ function App() {
      task.id === id ? { ...task, reminder: !task.reminder} : task ))
   }
 
-  const addTask = (task) => {
-    console.log('task', task);
-    const id = Math.floor(Math.random() *1000) + 1;
-    setTasks([ ...tasks, {id, ...task}])
+  const addTask = async (task) => {
+    /** without server */
+    //  const id = Math.floor(Math.random() *1000) + 1;
+    //  setTasks([ ...tasks, {id, ...task}])
+    
+    /** with server */
+    const res = await fetch(`http://localhost:5000/tasks`,{ 
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    });
+
+    const data = await res.json();
+    setTasks([ ...tasks, data])
+
    
   }
 
   return (
-    <div className="container">
-      <Header title={'mwai'} onAdd={() => setAddTask(!showAddTask)} showAdd={showAddTask} />
+    
+      <div className="container">
 
-      { showAddTask && <AddTask  addTask = {addTask} />}
+        <Header title={'mwai'} onAdd={() => setAddTask(!showAddTask)} showAdd={showAddTask} />
+
+        { showAddTask && <AddTask  addTask = {addTask} />}
+        
+        
+        { tasks.length ?  
+
+          <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}  /> :
+
+          <div style={{color: 'red', textAlign:'center'}} >
+            <i> <FaCannabis/> No tasks found</i>
+          </div>
+
+          }
+       
+        <Footer />
+
+      </div>
+
       
-      { tasks.length ?  
 
-        <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}  /> :
-
-        <div style={{color: 'red', textAlign:'center'}} >
-          <i> <FaCannabis/> No tasks found</i>
-        </div>
-
-      }
-
-    </div>
+    
   );
 }
 
