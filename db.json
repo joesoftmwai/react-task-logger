@@ -1,5 +1,19 @@
 {
-  "": [
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Doctors Appointment",
+      "date": "Feb 5th @ 2:30pm",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "text": "New gig from kelvin",
+      "date": "Feb 26th @ 10:30pm",
+      "reminder": true
+    }
+  ],
+  "posts": [
     {
       "id": 1,
       "title": "json-server",
