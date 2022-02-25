@@ -49,8 +49,6 @@ function App() {
     return data;
   }
 
-  
-
   const deleteTask = async (id) => {
     await fetch(`http://localhost:5000/tasks/${id}`,{ 
       method: 'DELETE'
@@ -86,9 +84,13 @@ function App() {
   }
 
   return (
-    
-      <div className="container">
+    /** Router: wraps everything returned */
+   
+  
+      
 
+
+      <div className="container">
         <Header title={'mwai'} onAdd={() => setAddTask(!showAddTask)} showAdd={showAddTask} />
 
         { showAddTask && <AddTask  addTask = {addTask} />}
@@ -105,11 +107,9 @@ function App() {
           }
        
         <Footer />
-
       </div>
 
-      
-
+    
     
   );
 }
